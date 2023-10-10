@@ -44,7 +44,9 @@ struct RegisterView: View {
         VStack {
             TextField("Type your name...", text: $name)
                 .bordered()
-            Text(name)
+            if name.count >= 3 {
+                Text(name)
+            }
         }
         .padding(.bottom, keyboardHandler.keyboardHeight)
         .edgesIgnoringSafeArea(keyboardHandler.isVisible ? .bottom : [])
