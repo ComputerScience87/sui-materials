@@ -33,35 +33,6 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @ObservedObject var keyboardHandler: KeyboardFollower
-    @State var name: String = ""
-
-    init(keyboardHandler: KeyboardFollower) {
-        self.keyboardHandler = keyboardHandler
-    }
-
-    var body: some View {
-        VStack {
-            TextField("Type your name...", text: $name)
-                .bordered()
-            if name.count >= 3 {
-                Text(name)
-            }
-        }
-        .padding(.bottom, keyboardHandler.keyboardHeight)
-        .edgesIgnoringSafeArea(keyboardHandler.isVisible ? .bottom : [])
-        .padding()
-        .background(WelcomeBackgroundImage())
-    }
-}
-
-struct RegisterView_Previews: PreviewProvider {
-    static var previews: some View {
-        RegisterView(keyboardHandler: KeyboardFollower())
-    }
-}
-
-/*struct RegisterView: View {
     @EnvironmentObject var userManager: UserManager
     @ObservedObject var keyboardHandler: KeyboardFollower
 
@@ -142,4 +113,4 @@ struct RegisterView_Previews: PreviewProvider {
         RegisterView(keyboardHandler: KeyboardFollower())
             .environmentObject(user)
     }
-}*/
+}
