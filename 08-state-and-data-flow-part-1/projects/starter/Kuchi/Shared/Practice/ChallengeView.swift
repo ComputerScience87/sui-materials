@@ -36,19 +36,16 @@ struct ChallengeView: View {
     let challengeTest: ChallengeTest
 
     @State var showAnswers = false
-    @State var numberOfAnswered: Int
 
     var body: some View {
         VStack {
             Button(action: {
                 self.showAnswers.toggle()
-                self.numberOfAnswered += 1
             }) {
                 QuestionView(question: challengeTest.challenge.question)
                     .frame(height: 300)
             }
-            ScoreView(numberOfQuestions: 5, numberOfAnswered: $numberOfAnswered)
-            Text("ChallengeView Counter: \(numberOfAnswered)")
+            ScoreView(numberOfQuestions: 5)
 
             if showAnswers {
                 Divider()
@@ -74,6 +71,6 @@ struct ChallengeView_Previews: PreviewProvider {
   
   static var previews: some View {
     // 2
-      return ChallengeView(challengeTest: challengeTest, numberOfAnswered: 0)
+      return ChallengeView(challengeTest: challengeTest)
   }
 }
